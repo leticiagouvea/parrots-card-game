@@ -12,12 +12,10 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .cartas {
-    width: 990px;
-    height: 350px;
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -27,7 +25,7 @@ span {
 .carta {
     width: 117px;
     height: 146px;
-    margin-right: 20px;
+    margin: 0px 10px 30px 10px;
     border-radius: 5px;
     border: 1px solid #99CEA8;
     background-color: #A7E9AF;
@@ -35,4 +33,26 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 1s linear;
+}
+
+.parrotimg {
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 414px) {
+
+    span {
+        font-size: 45px;
+        text-align: center;
+    }
+    .cartas {
+        width: 200px;
+        height: auto;
+        margin: 0 auto;
+    }
+    .carta {
+        margin: 0px 0px 20px 0px;
+    }
 }
