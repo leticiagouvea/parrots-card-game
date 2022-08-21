@@ -33,12 +33,37 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 1s linear;
+    transition: transform 1s;
+    position: relative;
 }
 
-.parrotimg {
+.parrotimg img {
     width: 100px;
     height: 100px;
+}
+
+.parrotgif img {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 35px;
+    left: 30px;
+}
+
+.virou {
+    transform: rotateY(180deg);
+}
+
+.virou .parrotimg {
+    opacity: 0;
+}
+
+.virou .parrotgif {
+    opacity: 1;
+}
+
+.escondido {
+    opacity: 0;
 }
 
 @media (max-width: 414px) {
