@@ -33,7 +33,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 1s;
+    transition: transform 0.5s;
     position: relative;
 }
 
@@ -53,15 +53,12 @@ span {
 .virou {
     transform: rotateY(180deg);
 }
-
 .virou .parrotimg {
     opacity: 0;
 }
-
 .virou .parrotgif {
     opacity: 1;
 }
-
 .escondido {
     opacity: 0;
 }

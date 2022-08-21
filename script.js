@@ -1,8 +1,9 @@
-let qtdcartas = prompt('Digite com quantas cartas deseja jogar:');
-let caixacartas = document.querySelector('.cartas');
-let arraycartas = [];
+let qtdCartas = Number(prompt('Digite com quantas cartas deseja jogar:'));
+let caixaCartas = document.querySelector('.cartas');
+let arrayCartas = [];
 let cartaClicada;
-
+let clicks = 0;
+let acertos = 0;
 let gifs = [
     'bobross', 'bobross',
     'explody', 'explody',
@@ -13,11 +14,11 @@ let gifs = [
     'unicorn', 'unicorn'
 ]
 
-while (qtdcartas < 4 || qtdcartas > 14 || qtdcartas %2 == 1 || isNaN(qtdcartas) === true) {
-    qtdcartas = prompt('Ops! A quantidade de cartas deve ser um número par entre 4 a 14.')
+while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas %2 == 1 || isNaN(qtdCartas) === true) {
+    qtdCartas = prompt('Ops! A quantidade de cartas deve ser um número par entre 4 a 14.')
 } alert ('Ok, pode jogar!')
 
-for (let i = 0; i < qtdcartas; i++) {
+for (let i = 0; i < qtdCartas; i++) {
 
     let cartas =`
     <div class="carta" onclick="virarCarta(this)">
@@ -30,18 +31,19 @@ for (let i = 0; i < qtdcartas; i++) {
         </div>
     </div>
     `
-    arraycartas.push(cartas)
+    arrayCartas.push(cartas)
 }
 
-arraycartas.sort(comparador)
+arrayCartas.sort(comparador)
 function comparador() {
     return Math.random() - 0.5;
 }
 
-caixacartas.innerHTML = arraycartas.join("")
+caixaCartas.innerHTML = arrayCartas.join("")
 
 function virarCarta(elemento) {
     elemento.classList.add('virou');
+    clicks++;
 
     if (cartaClicada === undefined) {
         cartaClicada = elemento
@@ -57,12 +59,30 @@ function comparaCartas(carta1, carta2) {
     if (carta1.innerHTML === carta2.innerHTML) {
         carta1.removeAttribute('onclick')
         carta2.removeAttribute('onclick')
+        acertos += 2;
+        console.log(acertos)
+
+        if (qtdCartas === acertos) {
+            setTimeout(() => {
+                alert(`Você ganhou em ${clicks} jogadas!`);
+                reiniciarPartida();
+            }, 500)
+        }
 
     } else {
-        setTimeout(function() {
-            carta1.classList.remove('virou')
-            carta2.classList.remove('virou')
+        setTimeout(() => {
+            carta1.classList.remove('virou');
+            carta2.classList.remove('virou');
         }, 1000)
     }
 }
 
+function reiniciarPartida() {
+    const reiniciar = prompt('Deseja jogar novamente? Digite "sim" ou "não".');
+
+    if (reiniciar === "sim") {
+        window.location.reload();
+    } else {
+        alert('Fim de jogo');
+    }
+}
