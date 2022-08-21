@@ -12,11 +12,11 @@ let gifs = [
     'revertit', 'revertit',
     'triplets', 'triplets',
     'unicorn', 'unicorn'
-]
+];
 
 while (qtdCartas < 4 || qtdCartas > 14 || qtdCartas %2 == 1 || isNaN(qtdCartas) === true) {
-    qtdCartas = prompt('Ops! A quantidade de cartas deve ser um número par entre 4 a 14.')
-} alert ('Ok, pode jogar!')
+    qtdCartas = prompt('Ops! A quantidade de cartas deve ser um número par entre 4 a 14.');
+} alert ('Ok, pode jogar!');
 
 for (let i = 0; i < qtdCartas; i++) {
 
@@ -34,7 +34,7 @@ for (let i = 0; i < qtdCartas; i++) {
     arrayCartas.push(cartas)
 }
 
-arrayCartas.sort(comparador)
+arrayCartas.sort(comparador);
 function comparador() {
     return Math.random() - 0.5;
 }
@@ -49,7 +49,7 @@ function virarCarta(elemento) {
         cartaClicada = elemento
 
     } else {
-        comparaCartas(cartaClicada, elemento)
+        comparaCartas(cartaClicada, elemento);
     }
 }
 
@@ -57,12 +57,11 @@ function comparaCartas(carta1, carta2) {
     cartaClicada = undefined
 
     if (carta1.innerHTML === carta2.innerHTML) {
-        carta1.removeAttribute('onclick')
-        carta2.removeAttribute('onclick')
-        acertos += 2;
-        console.log(acertos)
+        carta1.removeAttribute('onclick');
+        carta2.removeAttribute('onclick');
+        acertos ++;
 
-        if (qtdCartas === acertos) {
+        if (qtdCartas === acertos * 2) {
             setTimeout(() => {
                 alert(`Você ganhou em ${clicks} jogadas!`);
                 reiniciarPartida();
